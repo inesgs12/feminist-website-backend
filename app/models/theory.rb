@@ -1,0 +1,2 @@
+class Theory < ApplicationRecord
+end

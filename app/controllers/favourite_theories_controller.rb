@@ -1,0 +1,2 @@
+class FavouriteTheoriesController < ApplicationController
+end
