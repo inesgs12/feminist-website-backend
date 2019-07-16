@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, only: [:show]
   resources :favourite_theories
   resources :favourite_books
   resources :favourite_authors
   resources :publications
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:create]
-  post '/login', to: 'auth#create'
-  get '/profile', to: 'users#profile'
+  resources :books 
+  resources :authors 
+  resources :theories
+  resources :reviews
+ 
+  post '/signin', to: 'users#signin'
+  #you want to be able to send your id even when you make get requests
+  #we can put metadata in our headers
+  get '/validate', to: 'users#validate'
 
 end
