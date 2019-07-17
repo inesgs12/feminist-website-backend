@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
     
     def index
-        author = Author.all
+        authors = Author.all
     end
 
     def show
