@@ -1,2 +1,0 @@
-class PublicationsController < ApplicationController
-end

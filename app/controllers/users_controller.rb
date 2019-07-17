@@ -9,6 +9,7 @@ class UsersController < ApplicationController
         else
             render json: { error: 'Please fill out all required fields and try again'}
             #render what was missing explicitely?
+        end
     end
 
     def signin
