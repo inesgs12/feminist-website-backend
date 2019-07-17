@@ -8,6 +8,7 @@ class UsersController < ApplicationController
             render json: user
         else
             render json: { error: 'Please fill out all required fields and try again'}
+            #render what was missing explicitely?
     end
 
     def signin
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
             #how do I render the user AND also an alert with the json thing 
         else
             render json: {error: "Update failed"}
+        end
     end
 
     def show
