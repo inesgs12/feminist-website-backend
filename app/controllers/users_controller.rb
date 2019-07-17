@@ -1,30 +1,13 @@
 class UsersController < ApplicationController
-    def new
-        @user = User.new
-    end
+    before_action :find_user_by_id, only: [:edit, :show, :update, :destroy]
     
     def signup
-        @user = User.new(user_params)
-        if @user.valid?
-            @user.save
-            render json: @user
+        user = User.new(user_params)
+        if user.valid?
+            user.save
+            render json: user
         else
             render json: { error: 'Please fill out all required fields and try again'}
-    end
-
-    def edit
-    end
-
-    def update
-    end
-
-    def show
-        user = User.find_by(id: params[:id])
-        if user
-            render json: user
-        else 
-            render json: { error: 'User not found'}, status: 404
-        end
     end
 
     def signin
@@ -46,13 +29,39 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit
+    end
+
+    def update
+        user.update(user_params)
+        if user.valid?
+            render json: user
+            #how do I render the user AND also an alert with the json thing 
+        else
+            render json: {error: "Update failed"}
+    end
+
+    def show
+        if user
+            render json: user
+        else 
+            render json: { error: 'User not found'}, status: 404
+        end
+    end
+
     def destroy
+        user.destroy
+        render json: { notice: 'User deleted'}
     end
 
 
     private
     def user_params
         params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :photo)
+    end
+
+    def find_user_by_id
+        user = User.find_by(id: params[:id])
     end
  
 
