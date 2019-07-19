@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   resources :favourite_books, only: [:index, :show, :create, :destroy]
   resources :favourite_authors, only: [:index, :show, :create, :destroy]
   resources :publications, only: [:index, :show]
-  resources :books, only: [:index, :show]
+  resources :books, only: [:index]
   resources :authors, only: [:index, :show] 
   resources :theories, only: [:index, :show]
   resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
  
+  get '/books/:title', to: 'books#show'
+
   post '/signin', to: 'users#signin'
   #you want to be able to send your id even when you make get requests
   #we can put metadata in our headers

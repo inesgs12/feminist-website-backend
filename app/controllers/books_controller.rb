@@ -6,8 +6,12 @@ class BooksController < ApplicationController
     end
 
     def show
-        book = Book.find_by(id: params[:id])
-        render json: review
+        book = Book.find_by(title: params[:title])
+        if book
+            render json: book
+        else
+            render json: { error: 'Book not found.' }, status: 404
+        end
     end
     
 end
