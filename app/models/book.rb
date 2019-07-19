@@ -6,5 +6,5 @@ class Book < ApplicationRecord
     has_many :authors, through: :publications
 
     validates :title, :year, :synopsis, presence: true
-    validates :year, length { is: 4 }
+    validates :year, length: { is: 4 }
 end
