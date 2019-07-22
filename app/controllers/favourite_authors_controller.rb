@@ -1,5 +1,5 @@
 class FavouriteAuthorsController < ApplicationController
-    before_action :find_favourite_author, only: [ :show, :destroy]
+    before_action :find_favourite_author, only: [ :show]
     before_action :find_author, only: [:create, :destroy]
     before_action :find_user, only: [:create]
 
@@ -13,19 +13,14 @@ class FavouriteAuthorsController < ApplicationController
     end 
 
     def create
-        favourite_author = FavouriteAuthor.new(favourite_author_params)
-        if favourite_author.valid?
-            favourite_author.save 
-            render json: favourite_author
-        else
-            render json: { error: 'Please try again'}
-            #render the explicit error!
-        end
+        favourite_author = FavouriteAuthor.create(favourite_author_params)
+        render json: favourite_author
     end
 
     def destroy 
+        favourite_author = FavouriteAuthor.find_by(author_id: params[:author_id], user_id: params[:user_id])
         favourite_author.destroy 
-        render json: author
+        render json: { message: "author removed from liked authors"}
     end
 
     private
