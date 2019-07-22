@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   resources :users, only: [:signup, :signin, :validate, :edit, :update, :show, :destroy]
   resources :favourite_theories, only: [:index, :show, :create, :destroy]
   resources :favourite_books, only: [:index, :show, :create, :destroy]
-  resources :favourite_authors, only: [:index, :show, :create, :destroy]
-  resources :publications, only: [:index, :show]
   resources :books, only: [:index]
-  resources :authors, only: [:index, :show] 
-  resources :theories, only: [:index, :show]
+  resources :authors, only: [:index] 
+  resources :theories, only: [:index]
   resources :reviews, only: [:index, :show, :create, :edit, :update, :destroy]
  
   get '/books/:title', to: 'books#show'
+  get '/authors/:name', to: 'authors#show'
+  get '/books/:name', to: 'theories#show'
 
   post '/signin', to: 'users#signin'
   #you want to be able to send your id even when you make get requests

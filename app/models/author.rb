@@ -1,7 +1,6 @@
 class Author < ApplicationRecord
     has_many :favourite_authors
-    has_many :publications
-    has_many :books, through: :publications
+    has_many :books
     has_many :users, through: :favourite_authors
 
     validates :name, presence: true 

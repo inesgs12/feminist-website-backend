@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_21_171947) do
+ActiveRecord::Schema.define(version: 2019_07_21_204043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 2019_07_21_171947) do
     t.string "language"
     t.string "link"
     t.string "cover"
-    t.string "author"
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_books_on_author_id"
   end
 
   create_table "favourite_authors", force: :cascade do |t|
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_171947) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "books", "authors"
   add_foreign_key "favourite_authors", "authors"
   add_foreign_key "favourite_authors", "users"
   add_foreign_key "favourite_books", "books"

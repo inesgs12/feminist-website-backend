@@ -6,8 +6,12 @@ class AuthorsController < ApplicationController
     end
 
     def show
-        author = Author.find_by(id: params[:id])
-        render json: author
+        author = Author.find_by(name: params[:name])
+        if author
+            render json: author
+        else
+            render json: { error: 'Author not found.'}, status: 404
+        end
     end
 
 end

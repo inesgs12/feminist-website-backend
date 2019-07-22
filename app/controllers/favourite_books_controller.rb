@@ -13,13 +13,8 @@ class FavouriteBooksController < ApplicationController
     end
 
     def create
-        favourite_book = FavouriteBook.new(favourite_book_params)
-        if favourite_book.valid?
-            favourite_book.save 
-            render json: favourite_book
-        else
-            render json: { error: 'Please try again'}
-        end
+        favourite_book = FavouriteBook.create(favourite_book_params)
+        render json: favourite_book
     end 
 
     def destroy
