@@ -1,5 +1,5 @@
 class FavouriteBooksController < ApplicationController
-    before_action :find_favourite_book, only: [:show, :destroy]
+    before_action :find_favourite_book, only: [:show]
     before_action :find_book, only: [:create, :destroy]
     before_action :find_user, only: [:create]
 
@@ -9,7 +9,7 @@ class FavouriteBooksController < ApplicationController
     end
 
     def show
-        render json: favourite_book
+        # render json: favourite_book
     end
 
     def create
@@ -18,8 +18,9 @@ class FavouriteBooksController < ApplicationController
     end 
 
     def destroy
+        favourite_book = FavouriteBook.find_by(book_id: params[:book_id], user_id: params[:user_id])
         favourite_book.destroy
-        render json: book
+        render json: { message: "book removed from liked books"}
     end
 
     private 

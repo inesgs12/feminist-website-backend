@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:signup, :signin, :validate, :edit, :update, :show, :destroy]
   resources :favourite_theories, only: [:index, :show, :create, :destroy]
-  resources :favourite_books, only: [:index, :show, :create, :destroy]
+  resources :favourite_books, only: [:index, :show, :create]
   resources :books, only: [:index]
   resources :authors, only: [:index] 
   resources :theories, only: [:index]
@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   get '/validate', to: 'users#validate'
 
   post '/signup', to: 'users#signup'
+
+  delete '/favourite_books/:book_id/:user_id', to: 'favourite_books#destroy'
 
 end
