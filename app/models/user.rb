@@ -7,6 +7,7 @@ class User < ApplicationRecord
     has_many :authors, through: :favourite_authors
     has_many :books, through: :favourite_books
     has_many :theories, through: :favourite_theories 
+    has_many :reviews
 
     validates :username, :password, :first_name, :last_name, presence: true 
     validates :username,{
