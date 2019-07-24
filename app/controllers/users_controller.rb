@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     before_action :find_user_by_id, only: [:edit, :show, :update, :destroy]
     
     def signup
+        byebug
         user = User.new(user_params)
         if user.valid?
             user.save
@@ -60,7 +61,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username, :password, :first_name, :last_name, :bio, :photo)
+        params.permit(:username, :password, :first_name, :last_name, :bio, :photo)
     end
 
     def find_user_by_id

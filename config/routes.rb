@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:signup, :signin, :validate, :edit, :update, :show, :destroy]
+  resources :users, only: [:edit, :update, :show, :destroy]
   resources :favourite_theories, only: [:index, :show, :create]
   resources :favourite_books, only: [:index, :show, :create]
   resources :favourite_authors, only: [:index, :show, :create]
