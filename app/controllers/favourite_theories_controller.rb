@@ -4,7 +4,7 @@ class FavouriteTheoriesController < ApplicationController
     before_action :find_user, only: [:create]
 
     def index
-        favourite_theories = FavouriteTheory.all 
+        favourite_theories = FavouriteTheory.all
         render json: favourite_theories
     end
 

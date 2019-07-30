@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
     before_action :find_user_by_id, only: [:edit, :show, :update, :destroy]
     
+    def index 
+        users = User.all
+        render json: users
+    end 
+
     def signup
-        byebug
         user = User.new(user_params)
         if user.valid?
             user.save
-            render json: user
+            render json: { user: UserSerializer.new(user), token: issue_token({id: user.id})}
         else
             render json: { error: 'Please fill out all required fields and try again'}
             #render what was missing explicitely?
@@ -16,7 +20,7 @@ class UsersController < ApplicationController
     def signin
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            render json: {id: user.id, username: user.username, first_name: user.first_name,  last_name: user.last_name, photo: user.photo, bio: user.bio, favourite_books: user.books, favourite_theories: user.theories, favourite_authors: user.authors, token: issue_token({ id: user.id })} #just sending the stuff that we need, the username to be greeted and the id for local storage
+            render json: { user: UserSerializer.new(user), token: issue_token({id: user.id})} #just sending the stuff that we need, the username to be greeted and the id for local storage
         else
             render json: { error: 'Invalid username/password combination'}, status: 401
         end
@@ -25,7 +29,7 @@ class UsersController < ApplicationController
     def validate
         user = get_current_user
         if user
-            render json: { id: user.id, username: user.username, first_name: user.first_name, last_name: user.last_name, photo: user.photo, bio: user.bio, favourite_books: user.books, favourite_theories: user.theories, favourite_authors: user.authors, token: issue_token({id: user.id})}
+            render json: { user: UserSerializer.new(user), token: issue_token({id: user.id})}
         else
             render json: {error: 'User not found'}, status: 404
             #I don't want this to render all the time.

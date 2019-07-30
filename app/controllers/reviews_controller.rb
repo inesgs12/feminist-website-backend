@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-    before_action :find_review, only: [:edit, :show, :update, :destroy]
 
     def index
         reviews = Review.all
@@ -7,6 +6,7 @@ class ReviewsController < ApplicationController
     end
 
     def show
+        review = Review.find_by(id: params[:id])
         render json: review
     end
 
@@ -25,16 +25,20 @@ class ReviewsController < ApplicationController
     end
 
     def update
+        # byebug
+        review = Review.find_by(id: params[:id])
+        book = Book.find_by(id: params[:book_id])
         review.update(review_params)
         if review.valid?
-            render json: review
+            render json: book.reviews
         else
             render json: {error: 'Update failed'}
         end
     end
 
     def destroy
-        review.destoy 
+        review = Review.find_by(id: params[:id])
+        review.destroy 
         render json: { notice: 'Review deleted'}
     end
 
@@ -42,9 +46,5 @@ class ReviewsController < ApplicationController
 
     def review_params
         params.permit(:star_rating, :comment, :user_id, :book_id)
-    end
-
-    def find_review
-        review = Review.find_by(id: params[:id])
     end
 end

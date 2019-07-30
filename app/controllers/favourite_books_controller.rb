@@ -4,7 +4,7 @@ class FavouriteBooksController < ApplicationController
     before_action :find_user, only: [:create]
 
     def index
-        favourite_books = get_current_user.favourite_books
+        favourite_books = FavouriteBook.all
         render json: favourite_books
     end
 

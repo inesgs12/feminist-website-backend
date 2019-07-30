@@ -11,11 +11,6 @@ class ApplicationController < ActionController::API
         request.headers['Authorisation']
     end
     
-    #not the best way to store secret but will work for now 
-    # def secret
-    #     "oursecret"
-    # end
-
     #encode data
     def issue_token(data)
         JWT.encode(data, ENV['FEMHUB_SECRET'])
