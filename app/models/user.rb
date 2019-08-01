@@ -8,7 +8,11 @@ class User < ApplicationRecord
     has_many :books, through: :favourite_books
     has_many :theories, through: :favourite_theories 
     has_many :reviews
-    has_many :books, through: :reviews
+    # has_many :books, through: :reviews
+
+    def reviewed_books
+        self.reviews.map{|r| r.book}
+    end
 
     validates :username, :password, :first_name, :last_name, presence: true 
     validates :username,{

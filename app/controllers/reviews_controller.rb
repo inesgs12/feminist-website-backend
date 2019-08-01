@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
             review.save 
             render json: review 
         else 
-            render json: { error: 'There was an error, please try again'}
+            render json: { error: "Validation failed: Please enter a star rating & a comment"}
             #render the explicit error! 
         end
     end
