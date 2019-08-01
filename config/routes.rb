@@ -12,7 +12,7 @@ Rails.application.routes.draw do
  
   get '/books/:title', to: 'books#show'
   get '/authors/:name', to: 'authors#show'
-  get '/books/:name', to: 'theories#show'
+  get '/theories/:name', to: 'theories#show'
   get '/users', to: 'users#index'
   delete '/favourite_books/:book_id/:user_id', to: 'favourite_books#destroy'
   delete '/favourite_authors/:author_id/:user_id', to: 'favourite_authors#destroy'

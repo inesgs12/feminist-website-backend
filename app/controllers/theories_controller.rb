@@ -6,7 +6,11 @@ class TheoriesController < ApplicationController
     end
 
     def show
-        theory = Theory.find_by(id: params[:id])
-        render json: theory
+        theory = Theory.find_by(name: params[:name])
+        if theory
+            render json: theory
+        else
+            render json: { error: 'Theory not found.'}, status: 404
+        end
     end
 end
