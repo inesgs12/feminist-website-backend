@@ -14,7 +14,7 @@ class User < ApplicationRecord
         self.reviews.map{|r| r.book}
     end
 
-    validates :username, :password, :first_name, :last_name, presence: true 
+    validates :username, :password, presence: true 
     validates :username,{
         uniqueness: { case_sensitive: false, message: "username has been taken"},
         length: { minimum: 2 }
