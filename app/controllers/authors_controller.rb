@@ -10,7 +10,7 @@ class AuthorsController < ApplicationController
         if author
             render json: author
         else
-            render json: { error: 'Author not found.'}, status: 404
+            render json: { error: 'Author not found.'}, status: 404 
         end
     end
 
