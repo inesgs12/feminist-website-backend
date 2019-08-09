@@ -1,10 +1,10 @@
 # The Feminist Hub
 
-[Live site](thefeministhub.net) (username: ines / password: ines)
+### [Live site](thefeministhub.net) (username: ines / password: ines)
 
-[Demo](https://youtu.be/AigI6MtiBjo)
+### [Demo](https://youtu.be/AigI6MtiBjo)
 
-[FrontEnd](https://github.com/inesgs12/feminist-website-frontend)
+### [BackEnd](https://github.com/inesgs12/feminist-website-backend)
 
 ## About
 
@@ -13,7 +13,6 @@ The goal is that the Feminist Hub becomes your go-to page for all things feminis
 This website is the result of 15 weeks of learning at Flatiron School's Immersive Software Engineering Bootcamp. At the moment, I seeded some feminist books, authors and theories for the final showcase. This is just the starting point, I will keep adding as time goes by.
 
 ![](./images/homepage.gif)
-
 
 ## Technology
 
@@ -25,7 +24,6 @@ At the moment, it's **not** mobile-friendly but **I intend to built it using Rea
 - React.JS
 - HTML / CSS / Semantic UI
 - OAuth / bcrypt / JWS
-
 
 ## Features
 
