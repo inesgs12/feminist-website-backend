@@ -107,8 +107,10 @@ GEM
     pg (1.1.4)
     pg (1.1.4-x64-mingw32)
     pg (1.1.4-x86-mingw32)
-    puma (3.12.3)
-    puma (3.12.3-java)
+    puma (4.3.9)
+      nio4r (~> 2.0)
+    puma (4.3.9-java)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-cors (1.0.5)
       rack (>= 1.6.0)
@@ -183,7 +185,7 @@ DEPENDENCIES
   jwt (~> 2.2)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rack-cors
   rails (~> 5.2.3)
   spring
